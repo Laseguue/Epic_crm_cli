@@ -3,12 +3,18 @@ from django_filters.rest_framework import DjangoFilterBackend
 from .models import Event
 from .serializers import EventSerializer
 from .permissions import IsSupportOrManagement, IsSalesTeamForEvents
+from .filters import EventFilter
 
 class EventViewSet(viewsets.ModelViewSet):
     queryset = Event.objects.all()
     serializer_class = EventSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['contract', 'support_contact','event_start_date','event_end_date','location','attendees','notes']
+    filterset_class = EventFilter
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        filter = self.filterset_class(self.request.GET, queryset=queryset, request=self.request)
+        return filter.qs
 
     def get_permissions(self):
         if self.action in ['list', 'retrieve']:

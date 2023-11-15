@@ -3,12 +3,13 @@ from django_filters.rest_framework import DjangoFilterBackend
 from .models import Contract
 from .serializers import ContractSerializer
 from .permissions import IsManagementTeam, IsSalesTeam
+from .filters import ContractFilter
 
 class ContractViewSet(viewsets.ModelViewSet):
     queryset = Contract.objects.all()
     serializer_class = ContractSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['client', 'sales_contact','total_amount','amount_due','creation_date','status']
+    filterset_class = ContractFilter
 
     def get_permissions(self):
         if self.action in ['create']:
