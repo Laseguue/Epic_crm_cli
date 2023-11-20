@@ -93,3 +93,5 @@ L'application permet un filtrage détaillé des listes de clients, contrats, év
 - `first_name` : Filtrer par prénom.
 - `last_name` : Filtrer par nom de famille.
 - `groups` : Filtrer par groupe d'appartenance.
+
+- ex : sales_contact_is_null=true
