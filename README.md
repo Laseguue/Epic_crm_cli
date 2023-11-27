@@ -13,6 +13,7 @@ Cette interface en ligne de commande (CLI) est conçue pour interagir avec l'API
 #### Lancement
 - Pour démarrer l'application, exécutez :
 python cli_interface/cli_menu.py
+- N'oubliez pas de lancer le serveur également ( python manage.py runserver )
 
 ### Fonctionnalités
 
