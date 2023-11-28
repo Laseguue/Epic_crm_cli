@@ -1,3 +1,4 @@
 env/
 __pycache__/
 **/db.sqlite3
+epic_crm/cli_interface/flake8_report/
